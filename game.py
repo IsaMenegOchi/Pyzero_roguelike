@@ -74,7 +74,6 @@ ENEMY_DEAD_IMAGE = "enemy/enemy_dead"
 # Audio names
 MENU_MUSIC = "game_music"
 GAME_MUSIC = "game_music"
-SOUND_HIT = "hit_sound"
 SOUND_BUTTON = "hurt"
 
 # --- GLOBAL STATE ---
@@ -370,7 +369,7 @@ def update(dt):
                 enemy.update(dt)
                 if hero.attacking and hero.get_attack_rect().colliderect(enemy.get_rect()) and enemy.alive:
                     enemy.die()
-                    try: sounds[SOUND_HIT].play()
+                    try: sounds.enemy_hurt.play()
                     except Exception: pass
         else:
             if not game_over:
@@ -413,7 +412,7 @@ def hero_die():
     global death_timer
     death_timer = 0.0
     hero.die()
-    try: sounds[SOUND_HIT].play()
+    try: sounds.hero_hurt.play()
     except Exception: pass
 
 # --- INIT ---
