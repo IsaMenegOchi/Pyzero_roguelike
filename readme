@@ -1,0 +1,15 @@
+# Como foi feito o joguinho - Passo a Passo
+1. Verificar se temos python instalado e qual a versão
+```
+python --version
+```
+Se ele retornar uma versão, então está instalado, caso o contrário, devemos instalar em https://www.python.org/downloads/
+
+2. Instalar o pgzero
+```
+pip install pgzero
+```
+
+
+
+1 - Fazer 
