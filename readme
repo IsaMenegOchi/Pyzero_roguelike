@@ -1,15 +1,82 @@
-# Como foi feito o joguinho - Passo a Passo
-1. Verificar se temos python instalado e qual a versão
-```
-python --version
-```
-Se ele retornar uma versão, então está instalado, caso o contrário, devemos instalar em https://www.python.org/downloads/
+# 🛡️ Hero Adventure Game
 
-2. Instalar o pgzero
-```
-pip install pgzero
-```
+Um **jogo 2D de ação** feito com Python e Pygame Zero, onde você controla um herói que precisa derrotar inimigos dentro de um mapa, com animações de movimento, ataque e inimigos que patrulham áreas.  
+
+![Exemplo do jogo](screenshot.png)
+
+---
+
+## 🎮 Sobre o Jogo
+
+- Controle um herói com animações completas (andar, idle, atacar, morrer).
+- Inimigos andam aleatoriamente em territórios específicos.
+- Ataque corpo a corpo.
+- Música integrado.
+- Tela de menu com botões para iniciar, alternar música e sair.
+- Sistema de game over e reinício automático.
+
+---
+
+## 🕹️ Controles
+
+| Tecla | Ação                     |
+|-------|--------------------------|
+| **Setas** | Movimentar herói      |
+| **SPACE** | Atacar    |
+| **Mouse** | Clicar nos botões do menu |
+
+---
+
+## ⚡ Como Rodar
+
+1. Certifique-se de ter o [Python](https://www.python.org/downloads/) instalado.
+2. Instale o Pygame Zero:
+   ```bash
+   pip install pgzero
 
 
+## 🛠️ Como Foi Feito
 
-1 - Fazer 
+O jogo foi desenvolvido utilizando **Python** com a biblioteca **Pygame Zero**, que facilita a criação de jogos 2D com sprites animados e detecção de colisões.
+
+### Estrutura do Jogo
+
+1. **Classes Principais**
+   - `AnimatedActor`: Classe base para qualquer personagem animado. Gerencia animações de idle, caminhar, atacar e morrer.
+   - `Hero`: Herda de `AnimatedActor`, adiciona controles do jogador, ataque e detecção de colisão com inimigos.
+   - `Enemy`: Herda de `AnimatedActor`, adiciona movimentação aleatória dentro de territórios específicos e lógica de spawn/reaparecimento.
+
+2. **Sistema de Animação**
+   - Cada personagem possui diferentes **frames para cada direção** (`up`, `down`, `left`, `right`) e cada estado (`idle`, `walk`, `attack`).
+   - A animação é controlada por um **timer**, alternando frames com base na velocidade definida para cada estado.
+
+3. **Movimentação e Colisão**
+   - O herói se move usando as **setas do teclado** e o inimigo tem movimentação aleatória.
+   - Colisões são verificadas usando `Rect` do Pygame, permitindo detectar ataques do herói ou contato com inimigos.
+
+4. **Sistema de Ataque**
+   - O herói pode atacar com a tecla `SPACE`.
+   - O ataque possui uma **área de alcance maior** que o corpo do herói, permitindo matar inimigos ao se aproximar.
+   - Inimigos não atacam à distância por enquanto, mas você pode implementar projéteis usando a mesma lógica.
+
+5. **Menu e UI**
+   - Tela de menu com **botões interativos** (`Start Game`, `Toggle Music`, `Exit`) usando detecção de clique do mouse.
+   - Game over exibido centralizado na tela, com retorno automático ao menu após alguns segundos.
+
+6. **Música e Sons**
+   - Música de fundo e efeitos sonoros foram adicionados com `music.play()` e `sounds.play()`.
+   - Permite alternar música no menu sem reiniciar a execução do jogo.
+
+### Organização de Assets
+
+- **Sprites** organizados por personagem e ação (`hero/idle/down`, `enemy/walk/left`, etc.).
+- **Sons e música** em pastas separadas, facilitando manutenção e substituição de assets.
+
+### Desenvolvimento
+
+- Criado com foco em **simples e modular**, permitindo expandir para ataques à distância, diferentes inimigos, níveis e pontuação.
+- Utiliza **conceitos básicos de jogos 2D**: animação por frames, movimentação com vetores, detecção de colisão e timers para ações.
+
+---
+
+> Esse projeto serve como base para expandir e criar jogos mais complexos em Python com animações e lógica de combate.
