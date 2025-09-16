@@ -33,6 +33,7 @@ Um **jogo 2D de ação** feito com Python e Pygame Zero, onde você controla um 
 2. Instale o Pygame Zero:
    ```bash
    pip install pgzero
+3. Rode: pgzrun game.py
 
 
 ## 🛠️ Como Foi Feito
